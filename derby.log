@@ -1,0 +1,13 @@
+----------------------------------------------------------------
+Thu Mar 03 10:27:18 CET 2016:
+Booting Derby version The Apache Software Foundation - Apache Derby - 10.10.1.1 - (1458268): instance a816c00e-0153-3bcd-8816-0000306079c0 
+on database directory /home/gahrb/git/spark-cassandra-analyzer/metastore_db with class loader org.apache.spark.sql.hive.client.IsolatedClientLoader$$anon$1@4cecf26e 
+Loaded from file:/home/gahrb/spark-1.6.0-bin-hadoop2.6/lib/spark-assembly-1.6.0-hadoop2.6.0.jar
+java.vendor=Oracle Corporation
+java.runtime.version=1.7.0_95-b00
+user.dir=/home/gahrb/git/spark-cassandra-analyzer
+os.name=Linux
+os.arch=amd64
+os.version=4.2.0-30-generic
+derby.system.home=null
+Database Class Loader started - derby.database.classpath=''
