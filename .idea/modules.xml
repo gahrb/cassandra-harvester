@@ -2,8 +2,8 @@
 <project version="4">
   <component name="ProjectModuleManager">
     <modules>
-      <module fileurl="file://$PROJECT_DIR$/.idea/modules/spark-cassandra-analyzer.iml" filepath="$PROJECT_DIR$/.idea/modules/spark-cassandra-analyzer.iml" />
-      <module fileurl="file://$PROJECT_DIR$/.idea/modules/spark-cassandra-analyzer-build.iml" filepath="$PROJECT_DIR$/.idea/modules/spark-cassandra-analyzer-build.iml" />
+      <module fileurl="file://$PROJECT_DIR$/.idea/modules/cassandra-harvester.iml" filepath="$PROJECT_DIR$/.idea/modules/cassandra-harvester.iml" />
+      <module fileurl="file://$PROJECT_DIR$/.idea/modules/cassandra-harvester-build.iml" filepath="$PROJECT_DIR$/.idea/modules/cassandra-harvester-build.iml" />
     </modules>
   </component>
 </project>
