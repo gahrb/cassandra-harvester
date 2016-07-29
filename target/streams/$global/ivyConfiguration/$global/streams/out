@@ -1,3 +1,5 @@
 [debug] Other repositories:
 [debug] Default repositories:
 [debug] Using inline dependencies specified in Scala.
+[warn] Binary version (2.11.0-M3) for dependency org.scala-lang#jline;2.11.0-M3
+[warn] 	in ch.unisg#spark-cassandra-analyzer_scala$sources_2.11;0.0.1 differs from Scala binary version in project (2.11).

@@ -1,0 +1,7 @@
+<repositories>
+    <repository>
+        <id>cloudera-repos</id>
+        <name>Cloudera Repos</name>
+        <url>https://repository.cloudera.com/artifactory/cloudera-repos/</url>
+    </repository>
+</repositories>

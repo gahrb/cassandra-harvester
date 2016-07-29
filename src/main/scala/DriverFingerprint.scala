@@ -18,20 +18,19 @@ object DriverFingerprint {
   val keyspace = "dbv1"
   val authFile = new File("/home/gahrb/Desktop/Bosch IoT/cassandra-harvester/credentials.txt")
   val populatedSignals = Array(
-    "throttle_pressure",
-    "brake_pressure_detected",
-    "cruise_control_enabled",
-    "gear",
-    "breaking_pressure",
-    "cruise_control_active",
-    "steering_wheel_angle",
+    //"brake_pressure_detected",
+    //"breaking_pressure",
     "brake_pressure",
-    "trips",
-    "bearing",
-    "brake_pressure_detected_rpm",
+    //"brake_pressure_detected_rpm",
     "brake_position",
+    //"lights",
+    //"gear",
+    "cruise_control_active",
+    //"cruise_control_enabled",
+    //"steering_wheel_angle",
+    //"trips",
     "throttle_percent",
-    "lights",
+    //"throttle_pressure",
     "throttle_position")
   var humanSignals = Array(
     "ignition_status",
@@ -120,10 +119,10 @@ object DriverFingerprint {
     println(populatedSignals)
 
     val fp = new fingerprint(sc_conf, keyspace)
-    for (feature <- populatedSignals) {
+    for (feature <- populatedSignals.par) {
       fp.analyze_measurement(feature)
+      fp.finalize()
     }
-
 
   }
 
