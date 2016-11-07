@@ -20,18 +20,18 @@ object DriverFingerprint {
   val populatedSignals = Array(
     //"brake_pressure_detected",
     //"breaking_pressure",
-    "brake_pressure",
+    "brake_pressure")//,
     //"brake_pressure_detected_rpm",
-    "brake_position",
+    //"brake_position")//,
     //"lights",
     //"gear",
-    "cruise_control_active",
+    //"cruise_control_active",
     //"cruise_control_enabled",
     //"steering_wheel_angle",
     //"trips",
-    "throttle_percent",
-    //"throttle_pressure",
-    "throttle_position")
+    //"throttle_percent",
+    //"throttle_position",
+    //"throttle_pressure")
   var humanSignals = Array(
     "ignition_status",
     "throttle_pressure",
@@ -90,6 +90,7 @@ object DriverFingerprint {
       .set("spark.cassandra.connection.host", cassandraHost)
       .set("spark.cassandra.auth.username", user)
       .set("spark.cassandra.auth.password", password)
+      .set("input.fetch.size_in_rows","1000")
       .setMaster("local[*]")
     val sc = new SparkContext("local[*]", "test", sc_conf)
     //case class Measurement(id: String, timestamp: String, userid: String, value: Double)
@@ -97,13 +98,26 @@ object DriverFingerprint {
     val user_rdd = get_users(sc)
     sc.stop()
 
-    for (user_data <- user_rdd) {
+
+    val start_date = "2016-06-21"
+    val stop_date = "2016-07-21"
+
+    //val fp = new fingerprint(sc_conf, keyspace)
+    val ss = new screen_showtime(sc_conf, keyspace)
+    for (user_data <- user_rdd.par) {
       if (!user_data.isNullAt("userid") && !user_data.isNullAt("email")) {
         var email = user_data.getString("email")
         var userId = user_data.getUUID("userid")
         println(email + ": " + userId.toString())
+
+        // for (feature <- populatedSignals) {
+        //   fp.analyze_measurement(feature,userId)
+        //   fp.finalize()
+        // }
+        //ss.getScreentime(userId.toString,start_date,stop_date)
       }
     }
+    ss.valtoFile()
 
     // var features = ListBuffer.empty[String]
     // for (signal <- humanSignals){
@@ -116,13 +130,8 @@ object DriverFingerprint {
     //   }
     // }
     //sc.stop()
-    println(populatedSignals)
+    println(populatedSignals.toString)
 
-    val fp = new fingerprint(sc_conf, keyspace)
-    for (feature <- populatedSignals.par) {
-      fp.analyze_measurement(feature)
-      fp.finalize()
-    }
 
   }
 
